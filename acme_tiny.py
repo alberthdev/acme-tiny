@@ -114,7 +114,7 @@ def get_crt(account_key, csr, acme_dir, log=LOGGER, CA=DEFAULT_CA):
         # check that the file is in place
         wellknown_url = "http://{0}/.well-known/acme-challenge/{1}".format(domain, token)
         try:
-            resp = urlopen(Request(wellknown_url, headers = { 'User-Agent' : REQUEST_UA })
+            resp = urlopen(Request(wellknown_url, headers = { 'User-Agent' : REQUEST_UA }))
             resp_data = resp.read().decode('utf8').strip()
             assert resp_data == keyauthorization
         except (IOError, AssertionError):
